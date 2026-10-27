@@ -1,0 +1,265 @@
+{
+  "raw_rows": 6433,
+  "raw_missing_cells": 186,
+  "raw_duplicates": 0,
+  "outlier_table": [
+    {
+      "variable": "fare",
+      "upper fence": 27.8,
+      "outliers": 577,
+      "outlier %": 9.1,
+      "max": 150.0,
+      "mean": 13.02,
+      "median": 9.5,
+      "5% trimmed mean": 11.47
+    },
+    {
+      "variable": "distance",
+      "upper fence": 6.6,
+      "outliers": 724,
+      "outlier %": 11.4,
+      "max": 36.7,
+      "mean": 3.05,
+      "median": 1.66,
+      "5% trimmed mean": 2.46
+    },
+    {
+      "variable": "tip",
+      "upper fence": 7.0,
+      "outliers": 265,
+      "outlier %": 4.2,
+      "max": 23.2,
+      "mean": 1.97,
+      "median": 1.7,
+      "5% trimmed mean": 1.66
+    },
+    {
+      "variable": "duration_min",
+      "upper fence": 36.5,
+      "outliers": 357,
+      "outlier %": 5.6,
+      "max": 107.7,
+      "mean": 14.47,
+      "median": 10.97,
+      "5% trimmed mean": 13.16
+    },
+    {
+      "variable": "total",
+      "upper fence": 34.5,
+      "outliers": 585,
+      "outlier %": 9.2,
+      "max": 174.8,
+      "mean": 18.45,
+      "median": 14.16,
+      "5% trimmed mean": 16.6
+    }
+  ],
+  "clean_rows": 6370,
+  "rows_removed": 63,
+  "cleaning_log": [
+    {
+      "step": "Duplicate rows removed",
+      "rows_affected": 0,
+      "rule": "drop_duplicates()"
+    },
+    {
+      "step": "Timestamps parsed to datetime",
+      "rows_affected": 6433,
+      "rule": "pd.to_datetime"
+    },
+    {
+      "step": "Missing payment labelled Unknown",
+      "rows_affected": 44,
+      "rule": "fillna('Unknown'), row kept"
+    },
+    {
+      "step": "Missing pickup_zone labelled Unknown",
+      "rows_affected": 26,
+      "rule": "fillna('Unknown'), row kept"
+    },
+    {
+      "step": "Missing dropoff_zone labelled Unknown",
+      "rows_affected": 45,
+      "rule": "fillna('Unknown'), row kept"
+    },
+    {
+      "step": "Missing pickup_borough labelled Unknown",
+      "rows_affected": 26,
+      "rule": "fillna('Unknown'), row kept"
+    },
+    {
+      "step": "Missing dropoff_borough labelled Unknown",
+      "rows_affected": 45,
+      "rule": "fillna('Unknown'), row kept"
+    },
+    {
+      "step": "Passengers = 0 imputed with median",
+      "rows_affected": 96,
+      "rule": "0 treated as unrecorded; median = 1; flag kept"
+    },
+    {
+      "step": "Zero distance or non-positive duration removed",
+      "rows_affected": 51,
+      "rule": "51 zero-distance, 6 non-positive duration (overlap possible)"
+    },
+    {
+      "step": "Pickups outside March 2019 removed",
+      "rows_affected": 1,
+      "rule": "keep a clean one-month window"
+    },
+    {
+      "step": "Impossible speed (> 80 mph) removed",
+      "rows_affected": 11,
+      "rule": "not physically plausible in NYC"
+    }
+  ],
+  "outlier_counts": {
+    "fare": 577,
+    "distance": 724,
+    "tip": 265,
+    "duration_min": 357,
+    "total": 585
+  },
+  "zero_passengers": 94,
+  "mean_fare": 13.017913657770801,
+  "median_fare": 9.5,
+  "mean_distance": 3.0490910518053376,
+  "median_distance": 1.66,
+  "median_duration": 10.966666666666667,
+  "fare_skew": 3.1648124207685453,
+  "total_revenue": 117548.30000000002,
+  "median_speed": 10.07092009114481,
+  "mean_total": 18.453422291993725,
+  "dow_avg": {
+    "Monday": 176.0,
+    "Tuesday": 204.0,
+    "Wednesday": 239.0,
+    "Thursday": 224.0,
+    "Friday": 220.0,
+    "Saturday": 206.0,
+    "Sunday": 173.0
+  },
+  "day_speed": 9.01927336258959,
+  "night_speed": 13.967693375047451,
+  "late_speed": 11.139844001324079,
+  "peak_hour": 18,
+  "peak_hour_trips": 416,
+  "low_hour": 5,
+  "slow_hour": 16,
+  "slow_speed": 8.704663212435232,
+  "fast_hour": 5,
+  "fast_speed": 16.951336531871146,
+  "weekday_avg": 213.0952380952381,
+  "weekend_avg": 189.5,
+  "manhattan_pickup_share": 82.4,
+  "top_zone": "Midtown Center",
+  "top_zone_trips": 229,
+  "top_zone_share": 3.594976452119309,
+  "top10_zone_share": 30.4552590266876,
+  "top_route": "Upper East Side North to Upper East Side North",
+  "top_route_trips": 38,
+  "busiest_dow": "Wednesday",
+  "quietest_dow": "Sunday",
+  "time_band": {
+    "Night (00-05)": {
+      "trips": 586.0,
+      "median_speed": 14.0,
+      "median_fare": 9.8
+    },
+    "Morning (06-09)": {
+      "trips": 983.0,
+      "median_speed": 10.3,
+      "median_fare": 9.0
+    },
+    "Midday (10-15)": {
+      "trips": 1939.0,
+      "median_speed": 9.0,
+      "median_fare": 9.5
+    },
+    "Evening rush (16-19)": {
+      "trips": 1536.0,
+      "median_speed": 9.3,
+      "median_fare": 9.0
+    },
+    "Late evening (20-23)": {
+      "trips": 1326.0,
+      "median_speed": 11.1,
+      "median_fare": 9.0
+    }
+  },
+  "flat52_trips": 126,
+  "flat52_jfk_share": 90.47619047619048,
+  "flat52_all_yellow": true,
+  "fare_intercept": 2.542559295963173,
+  "fare_per_mile_coef": 2.086222312132924,
+  "fare_per_min_coef": 0.2838780897106852,
+  "fare_r2": 0.9372096800368102,
+  "fare_mae": 0.7411224291042895,
+  "spearman_fare_distance": 0.9436065320014551,
+  "airport_trips": 401,
+  "airport_median_fare": 36.0,
+  "other_median_fare": 9.0,
+  "tip_by_distance": {
+    "< 1 mi": 31.8,
+    "1-2 mi": 27.5,
+    "2-5 mi": 24.6,
+    "> 5 mi": 21.2
+  },
+  "card_share": 71.41287284144427,
+  "tip_pct_mean": 23.868282373421586,
+  "tip_pct_median": 25.55555555555556,
+  "zero_tip_share": 9.694438338096285,
+  "cash_share": 28.053375196232338,
+  "tip_by_band": {
+    "Night (00-05)": 25.6,
+    "Morning (06-09)": 25.0,
+    "Midday (10-15)": 25.3,
+    "Evening rush (16-19)": 26.3,
+    "Late evening (20-23)": 26.1
+  },
+  "tip_by_color": {
+    "green": 11.8,
+    "yellow": 26.3
+  },
+  "cash_tip_recorded_share": 0.0,
+  "color_profile": {
+    "green": {
+      "trips": 956.0,
+      "median_fare": 9.5,
+      "median_distance": 1.9,
+      "median_duration": 11.06,
+      "airport_share": 1.9,
+      "manhattan_pickup_share": 30.6
+    },
+    "yellow": {
+      "trips": 5414.0,
+      "median_fare": 9.5,
+      "median_distance": 1.61,
+      "median_duration": 10.97,
+      "airport_share": 7.1,
+      "manhattan_pickup_share": 91.5
+    }
+  },
+  "yellow_share": 84.99215070643642,
+  "zero_tip_green": 45.8,
+  "zero_tip_yellow": 4.6,
+  "tip_man_yellow": 26.666666666666668,
+  "tip_man_green": 22.285714285714285,
+  "p_tip_color_man": 7.352302412694008e-16,
+  "rbc_tip_man": 0.3818133978845446,
+  "n_man_green": 155,
+  "spearman_fare_duration": 0.9688199879603965,
+  "spearman_fare_passengers": 0.0009400624294339082,
+  "spearman_fare_tolls": 0.3709979830095298,
+  "spearman_fare_tip": 0.3032142222783228,
+  "p_tip_color": 8.750323776932997e-94,
+  "rbc_tip_color": 0.5330156910829158,
+  "p_pay_color": 2.0267849717652309e-19,
+  "cramers_v": 0.11625050900387118,
+  "p_tip_band": 8.596178301243283e-07,
+  "p_weekday": 0.016247259248943338,
+  "median_fpm": 5.416666666666667,
+  "fpm_lo": 5.3697334079045485,
+  "fpm_hi": 5.476190476190476,
+  "manhattan_to_manhattan": 92.70198170731707
+}

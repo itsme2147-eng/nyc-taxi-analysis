@@ -1,0 +1,12 @@
+step,rows_affected,rule
+Duplicate rows removed,0,drop_duplicates()
+Timestamps parsed to datetime,6433,pd.to_datetime
+Missing payment labelled Unknown,44,"fillna('Unknown'), row kept"
+Missing pickup_zone labelled Unknown,26,"fillna('Unknown'), row kept"
+Missing dropoff_zone labelled Unknown,45,"fillna('Unknown'), row kept"
+Missing pickup_borough labelled Unknown,26,"fillna('Unknown'), row kept"
+Missing dropoff_borough labelled Unknown,45,"fillna('Unknown'), row kept"
+Passengers = 0 imputed with median,96,0 treated as unrecorded; median = 1; flag kept
+Zero distance or non-positive duration removed,51,"51 zero-distance, 6 non-positive duration (overlap possible)"
+Pickups outside March 2019 removed,1,keep a clean one-month window
+Impossible speed (> 80 mph) removed,11,not physically plausible in NYC
